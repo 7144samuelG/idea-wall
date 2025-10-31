@@ -1,62 +1,35 @@
-# Sudoku Game Application
+# Idea Wall Application
 
 ## Overview
-A 2D game application that allows users to play Sudoku puzzles with puzzle generation, solving capabilities, and custom puzzle input functionality.
+A virtual sticky note wall where users can create, position, and manage ideas freely on a digital canvas.
 
 ## Core Features
 
-### Puzzle Generation
-- Generate valid Sudoku puzzles with varying difficulty levels (easy, medium, hard)
-- Each generated puzzle has a unique solution
-- Reliable puzzle generation that never fails or returns empty/unsolvable boards
-- Proper randomness in clue distribution to avoid repeated positions
-- Clear error handling with informative error messages for any generation failures
+### Idea Management
+- Users can create new ideas by typing text content
+- Each idea appears as a sticky note-style element on the wall
+- Users can edit the text content of existing ideas
+- Users can delete ideas they no longer need
 
-### Puzzle Solving
-- Solve any valid Sudoku board provided by the user
-- Return the complete solution for the given puzzle
+### Wall Interaction
+- Ideas can be placed anywhere on the virtual wall canvas
+- Users can drag and drop ideas to reposition them freely
+- The wall provides a large scrollable canvas area for idea placement
+- Visual feedback during drag operations
 
-### Interactive Gameplay
-- Display a 9x9 Sudoku grid interface
-- Allow users to input numbers (1-9) into empty cells
-- Clear visual distinction between pre-filled numbers and user inputs
-- Basic input validation to ensure only valid numbers are entered
-- Victory celebration when puzzle is completed successfully
-
-### Custom Puzzle Input
-- Allow users to input their own Sudoku puzzles
-- Validate that the input represents a valid Sudoku board configuration
-- Support solving user-provided puzzles
+### Data Persistence
+- All ideas and their positions are saved in the backend
+- Ideas persist between sessions
+- Real-time updates when ideas are added, moved, or edited
 
 ## Backend Requirements
-The backend stores and manages:
-- Robust puzzle generation algorithms for different difficulty levels with improved randomness
-- Sudoku solving algorithms
-- Validation logic for Sudoku board configurations
-- Error handling mechanisms for puzzle generation failures
+- Store idea data including text content and position coordinates (x, y)
+- Provide operations to create, read, update, and delete ideas
+- Handle position updates when ideas are moved on the wall
 
-Backend operations:
-- Generate new puzzle with specified difficulty (accepts difficulty as string: "easy", "medium", "hard")
-- Solve provided Sudoku board
-- Validate Sudoku board structure and rules
-- Handle and report puzzle generation errors with clear messages
-- Map string-based difficulty values to appropriate internal behavior
-
-## Frontend Requirements
-The frontend manages:
-- Current game state (user inputs, selected cells)
-- Display of the Sudoku grid
-- User interface for puzzle generation and solving requests
-- All active gameplay state remains in the frontend
-- Display error messages from backend when puzzle generation fails
-- Victory detection and celebration display when puzzle is completed successfully
-- "You Win!" message or celebratory animation when the backend's validateBoard function returns true
-
-## Technical Notes
-- Game state is maintained entirely in the frontend
-- Backend provides puzzle generation and solving services via API calls
-- Backend accepts difficulty as string values ("easy", "medium", "hard") in all public functions
-- Input validation ensures proper Sudoku rules are followed
-- Puzzle generation includes robust error handling and retry mechanisms
-- Victory state is triggered by successful board validation from the backend
-- Application language: English
+## User Interface
+- Clean, intuitive sticky note design for ideas
+- Smooth drag-and-drop interactions
+- Simple controls for adding new ideas
+- Edit mode for modifying existing idea content
+- Responsive canvas that works on different screen sizes
