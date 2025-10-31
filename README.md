@@ -1,25 +1,62 @@
-# Hello, world!
+# Sudoku Game Application
 
-"Hello, world!" projects are a common starting point for developers learning new languages or platforms, as it provides a simple demonstration of how a programming language can be written for an application.
+## Overview
+A 2D game application that allows users to play Sudoku puzzles with puzzle generation, solving capabilities, and custom puzzle input functionality.
 
-This application's logic is written in [Motoko](https://internetcomputer.org/docs/motoko/main/getting-started/motoko-introduction), a programming language designed specifically for developing canisters on ICP.
+## Core Features
 
-## Deploying from ICP Ninja
+### Puzzle Generation
+- Generate valid Sudoku puzzles with varying difficulty levels (easy, medium, hard)
+- Each generated puzzle has a unique solution
+- Reliable puzzle generation that never fails or returns empty/unsolvable boards
+- Proper randomness in clue distribution to avoid repeated positions
+- Clear error handling with informative error messages for any generation failures
 
-When viewing this project in ICP Ninja, you can deploy it directly to the mainnet for free by clicking "Run" in the upper right corner. Open this project in ICP Ninja:
+### Puzzle Solving
+- Solve any valid Sudoku board provided by the user
+- Return the complete solution for the given puzzle
 
-[![](https://icp.ninja/assets/open.svg)](https://icp.ninja/i?g=https://github.com/7144samuelG/idea-wall)
+### Interactive Gameplay
+- Display a 9x9 Sudoku grid interface
+- Allow users to input numbers (1-9) into empty cells
+- Clear visual distinction between pre-filled numbers and user inputs
+- Basic input validation to ensure only valid numbers are entered
+- Victory celebration when puzzle is completed successfully
 
-## Project structure
+### Custom Puzzle Input
+- Allow users to input their own Sudoku puzzles
+- Validate that the input represents a valid Sudoku board configuration
+- Support solving user-provided puzzles
 
-The `/backend` folder contains the Motoko canister, `app.mo`. The `/frontend` folder contains web assets for the application's user interface. The user interface is written with plain JavaScript, but any frontend framework can be used.
+## Backend Requirements
+The backend stores and manages:
+- Robust puzzle generation algorithms for different difficulty levels with improved randomness
+- Sudoku solving algorithms
+- Validation logic for Sudoku board configurations
+- Error handling mechanisms for puzzle generation failures
 
-Edit the `mops.toml` file to add [Motoko dependencies](https://mops.one/) to the project.
+Backend operations:
+- Generate new puzzle with specified difficulty (accepts difficulty as string: "easy", "medium", "hard")
+- Solve provided Sudoku board
+- Validate Sudoku board structure and rules
+- Handle and report puzzle generation errors with clear messages
+- Map string-based difficulty values to appropriate internal behavior
 
-## Build and deploy from the command-line
+## Frontend Requirements
+The frontend manages:
+- Current game state (user inputs, selected cells)
+- Display of the Sudoku grid
+- User interface for puzzle generation and solving requests
+- All active gameplay state remains in the frontend
+- Display error messages from backend when puzzle generation fails
+- Victory detection and celebration display when puzzle is completed successfully
+- "You Win!" message or celebratory animation when the backend's validateBoard function returns true
 
-To migrate your ICP Ninja project off of the web browser and develop it locally, follow these steps. These steps are necessary if you want to deploy this project for long-term, production use on the mainnet.
-
-### 1. Download your project from ICP Ninja using the 'Download files' button on the upper left corner under the pink ninja star icon.
-
-### 2. Open the `BUILD.md` file for further instructions.
+## Technical Notes
+- Game state is maintained entirely in the frontend
+- Backend provides puzzle generation and solving services via API calls
+- Backend accepts difficulty as string values ("easy", "medium", "hard") in all public functions
+- Input validation ensures proper Sudoku rules are followed
+- Puzzle generation includes robust error handling and retry mechanisms
+- Victory state is triggered by successful board validation from the backend
+- Application language: English
